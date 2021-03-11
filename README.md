@@ -173,6 +173,41 @@ Please create your test cases and run the following command to verify the functi
 bazel test tests:q4_student_test
 ```
 
+## Question 5 (50 Points. Medium)
+
+Please implement the following class for MaxHeap:
+- Provide Gtest for methods that are marked with "GT".
+```c++
+class MaxHeap {
+ public:
+  MaxHeap(); // default constructor
+
+  int getParentIndex(int i); //GT
+  int getLeftIndex(int i); //GT
+  int getRightIndex(int i); //GT
+  int getLargestChildIndex(int i); //GT
+
+  int getLeft(int i);
+  int getRight(int i);
+  int getParent(int i);
+
+  int top(); //GT
+  void push(int v); //GT
+  void pop(); //GT
+  void TrickleUp(int i);
+  void TrickleDown(int i);
+
+  vector<int> data_;
+};
+```
+
+Write several tests using GTest for your function in [tests/q1_student_test.cc](tests/q1_student_test.cc).
+
+Please create your test cases and run the following command to verify the functionality of your program.
+```
+bazel test tests:q1_student_test
+```
+
 # Optional Question
 
 ## Question 1 (No Points. Medium)
