@@ -25,7 +25,7 @@ Please create your test cases and run the following command to verify the functi
 bazel test tests:q1_student_test
 ```
 
-## Question 2 (40 Points. Medium)
+## Question 2 (30 Points. Medium)
 
 In this question, we will write a few recursive functions to *measure* a given binary tree. The definition of ```TreeNode``` could be found in ```cpplib.h```.
 
@@ -132,7 +132,7 @@ Please create your test cases and run the following command to verify the functi
 bazel test tests:q3_student_test
 ```
 
-## Question 4 (30 Points. Medium)
+## Question 4 (20 Points. Medium)
 
 - You are given the definition of Binary Search Tree:
   - The left subtree of a node k contains nodes with key less than the node k's value.
@@ -173,7 +173,7 @@ Please create your test cases and run the following command to verify the functi
 bazel test tests:q4_student_test
 ```
 
-## Question 5 (50 Points. Medium)
+## Question 5 (30 Points. Medium)
 
 Please implement the following class for MaxHeap:
 - Provide Gtest for methods that are marked with "GT".
