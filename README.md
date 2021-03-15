@@ -5,7 +5,7 @@
 - For non-coding questions, you will find **Answer** below each question. Please write your answer there.
 - For coding questions, please make sure that your code can run ```bazel run/test```. In this homework, you will need to fill up [cpplib.cc](src/lib/cpplib.cc) and tests in [tests](tests).
 - For submission, please push your answers to Github before the deadline.
-- Deadline: Friday, March 22nd by 06:30 pm
+- Deadline: Monday, March 22nd by 06:30 pm
 - Total: 130 points. 100 points is considered full credit.
 
 ## Question 1 (10 Points. Easy)
