@@ -42,3 +42,5 @@ bool CPPLib::isBST(TreeNode* root){
 int CPPLib::findLCA(TreeNode* root, int val_a, int val_b){
 
 }
+
+// Question 5

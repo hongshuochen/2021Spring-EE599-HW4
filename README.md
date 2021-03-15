@@ -5,17 +5,17 @@
 - For non-coding questions, you will find **Answer** below each question. Please write your answer there.
 - For coding questions, please make sure that your code can run ```bazel run/test```. In this homework, you will need to fill up [cpplib.cc](src/lib/cpplib.cc) and tests in [tests](tests).
 - For submission, please push your answers to Github before the deadline.
-- Deadline: Friday, October 9th by 06:30 pm
-- Total: 120 points. 100 points is considered full credit.
+- Deadline: Friday, March 22nd by 06:30 pm
+- Total: 130 points. 100 points is considered full credit.
 
-## Question 1 (20 Points. Easy)
+## Question 1 (10 Points. Easy)
 
-Write several functions in [cpplib.cc](src/lib/cpplib.cc) to satisfy the following requirements:
-Do not use any loops but try to with the help of stl algorithm like accumulate, transform and copy_if etc.
+Implement following functions in [cpplib.cc](src/lib/cpplib.cc).
+Do not use any loops but try to with the help of STL functions like **accumulate**, **transform** and **copy_if** etc.
 
-- **filter:** Write a function ```vector<int> keepOdd(const vector<int>& input);``` that filters out the numbers that are even and keeps the odd numbers in vector and returns a new vector that contains the result.
-- **map:** Write a function ```vector<int> transform(const vector<int>& input);``` that takes a vector of integers as input and outputs a new vector where output[i] = input[i] + 1 if input[i] is odd or output[i] = input[i]-1 if input[i] is even.
-- **sum:** Write a function ```int sum(const vector<int>& input);``` that sums up all elements in a vector.
+- **Filter:** Write a function ```vector<int> keepOdd(const vector<int>& input);``` that filters out the numbers that are even and keeps the odd numbers in vector and returns a new vector that contains the result.
+- **Map:** Write a function ```vector<int> transform(const vector<int>& input);``` that takes a vector of integers as input and outputs a new vector where output[i] = input[i] + 1 if input[i] is odd or output[i] = input[i]-1 if input[i] is even.
+- **Sum:** Write a function ```int sum(const vector<int>& input);``` that sums up all elements in a vector.
 
 Write several tests using GTest for your function in [tests/q1_student_test.cc](tests/q1_student_test.cc).
 
@@ -27,11 +27,12 @@ bazel test tests:q1_student_test
 
 ## Question 2 (30 Points. Medium)
 
-In this question, we will write a few recursive functions to *measure* a given binary tree. The definition of ```TreeNode``` could be found in ```cpplib.h```.
+In this question, we will write a few recursive functions on a given binary tree. The definition of ```TreeNode``` could be found in ```cpplib.h```.
 
 - Given a binary tree, find its total number of nodes.
-- Given a binary tree, find the sum of numbers from all its nodes.
-- Given a binary tree, find its maximum depth. The maximum depth is defined as the number of nodes along the longest path from the root node down to the farthest leaf node.
+- Given a binary tree of integers, find the sum of numbers from all of its nodes.
+- Given a binary tree, find its maximum depth. 
+  - The maximum depth is defined as the number of nodes along the longest path from the root node down to the farthest leaf node.
 
   Example:
   Input:
@@ -47,7 +48,7 @@ In this question, we will write a few recursive functions to *measure* a given b
   ```
 
   Expected output: 4
-- Given a binary tree, find the length of the diameter of the tree. The diameter of a binary tree is defined as the length of the longest path between any two nodes in a tree. This path may or may not pass through the tree root.
+- Given a binary tree, find the length of the diameter of the tree. The diameter of a binary tree is defined as the number of nodes on the longest path between any two nodes in a tree. This path may or may not pass through the tree root.
 
   Example - 1:
   Input:
@@ -62,7 +63,7 @@ In this question, we will write a few recursive functions to *measure* a given b
               6
   ```
 
-  Expected output: 4 (the path is 6-5-2-1-3, and it passes the tree root.)
+  Expected output: 5 (the nodes on the longest path are 6-5-2-1-3, and it passes the tree root.)
 
   Example - 2:
   Input:
@@ -79,9 +80,17 @@ In this question, we will write a few recursive functions to *measure* a given b
     8           9
   ```
 
-  Expected output: 6 (the path is 8-7-4-2-5-6-9, and it does not pass the tree root.)
+  Expected output: 7 (the nodes on the longest path are 8-7-4-2-5-6-9, and it does not pass the tree root.)
 
-  Hint: Unlike previous questions, you may want to write a helper function.
+  Hint: 
+  You can write a recursive function that calculates the diameter based on the following observation:
+
+  The diameter of a binary tree T is the largest of the following quantities:
+
+  - the diameter of T’s left subtree.
+  - the diameter of T’s right subtree.
+  - The height of the left subtree + the height of the right subtree + 1. This is the longest path between leaves that goes through the root of T.
+
 
 Write several tests using GTest for your function in tests/q2_student_test.cc.
 
@@ -91,7 +100,7 @@ Please create your test cases and run the following command to verify the functi
 bazel test tests:q2_student_test
 ```
 
-## Question 3 (30 Points. Easy)
+## Question 3 (30 Points. Medium)
 
 Please implement the following class for a Binary Search Tree (BST):
 Only methods that are marked with “GT” should be tested.
@@ -119,8 +128,8 @@ public:
       ~BST();
 
       void push(int key); // **GT** Inserts a key inside Tree
-      bool find(int key); // **GT** Returns true if key is in the Tree.
-      bool erase(int key); // **GT** Remove the key from the tree. If not successful, return false.
+      bool find(int key); // **GT** Returns true if the key is in the Tree.
+      bool erase(int key); // **GT** Removes the key from the tree. If not successful, returns false.
 };
 ```
 
@@ -134,15 +143,21 @@ bazel test tests:q3_student_test
 
 ## Question 4 (20 Points. Medium)
 
-- You are given the definition of Binary Search Tree:
-  - The left subtree of a node k contains nodes with key less than the node k's value.
-  - The right subtree of a node k contains nodes with key more than the node k's value.
+- You are given the definition of a Binary Search Tree:
+  - The left subtree of a node k contains nodes with keys less than the node k's value.
+  - The right subtree of a node k contains nodes with keys greater than the node k's value.
   - Both left subtree and right subtree are also valid BSTs.
 
 If you are given a binary tree, try to determine whether the given binary tree is a valid BST. Write a function `bool CPPLib::isBST(TreeNode* root)`
 
 - We store binary tree using pointers, using `struct TreeNode`
-- Try to find inorder traversal solution of BST, what and why does it happen?
+- Assume there are no duplicate values in the BST.
+
+Hint: You can use either of the following solutions:
+
+- Use the recursive definition above and write a recursive function based on that.
+- Try to find an inorder traversal of a BST. What is so special about this traversal? 
+  How can you use it to see if the tree was BST or not
 
 Example:
 
@@ -163,7 +178,7 @@ Input:
 nullptr
 ```
 
-Result is true, as we define 'nullptr' is a valid BST.
+Result is true, as we define 'nullptr' as a valid BST.
 
 Write several tests using GTest for your function in [tests/q4student_test.cc](tests/q4_student_test.cc).
 

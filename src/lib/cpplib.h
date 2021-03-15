@@ -54,8 +54,31 @@ public:
       ~BST();
 
       void push(int key); // **GT** Inserts a key inside Tree
-      bool find(int key); // **GT** Returns true if key is in the Tree.
-      bool erase(int key); // **GT** Remove the key from the tree. If not successful, return false.
+      bool find(int key); // **GT** Returns true if the key is in the Tree.
+      bool erase(int key); // **GT** Removes the key from the tree. If not successful, returns false.
+};
+
+// q5
+class MaxHeap {
+ public:
+  MaxHeap(); // default constructor
+
+  int getParentIndex(int i); //GT
+  int getLeftIndex(int i); //GT
+  int getRightIndex(int i); //GT
+  int getLargestChildIndex(int i); //GT
+
+  int getLeft(int i);
+  int getRight(int i);
+  int getParent(int i);
+
+  int top(); //GT
+  void push(int v); //GT
+  void pop(); //GT
+  void TrickleUp(int i);
+  void TrickleDown(int i);
+
+  vector<int> data_;
 };
 
 #endif
